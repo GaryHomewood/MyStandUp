@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1= title
+
+    ol
+        each val, index in results
+            li
+                p= val.key
+                p= val.summary
+                if val.daysAgo > 0
+                    if val.daysAgo == 1
+                        p Yesterday
+                    else
+                        p= val.timeAgo
+                else
+                    p= val.timeAgo
+
+    p Logged on as
+        b  #{username}
+    p
+        a(href='/logout') Logout
