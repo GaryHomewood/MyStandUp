@@ -15,4 +15,8 @@ html>body {
 .page-content {
     width: 550px;
     margin: 0 auto;
+    padding: 0 16px;
+}
+button {
+    margin: 30px 0;
 }

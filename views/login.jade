@@ -1,16 +1,24 @@
 extends layout
 
 block content
-    h1 Login
-    form(method='post')
-        p
-            label Username
-            input(type='text' name='username' autofocus)
-        p
-            label Password
-            input(type='password' name='password')
-        p
-            label Remember me
-            input(type='checkbox' name='remember')
-        p
-            input(type='submit' text='Login')
+    div(class="mdl-layout mdl-js-layout mdl-layout--fixed-header")
+        header(class="mdl-layout__header")
+            div(class="mdl-layout__header-row")
+                span(class="mdl-layout-title") MyStandUp
+        div(class="mdl-layout__drawer")
+        main(class="mdl-layout__content")
+            div(class="page-content")
+                h2 Login
+                form(method='post')
+                    div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label")
+                        input(class="mdl-textfield__input" type="text" id="username" name='username')
+                        label(class="mdl-textfield__label" for="username") Username
+                    div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label")
+                        input(class="mdl-textfield__input" type="text" id="password" name='password')
+                        label(class="mdl-textfield__label" for="password") Password
+                    div
+                        label(class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1")
+                            input(type='checkbox' class="mdl-checkbox__input" name='remember' id="checkbox-1")
+                            span(class="mdl-checkbox__label") Remember me
+                    div
+                        button(class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit") Login
