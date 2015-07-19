@@ -7,12 +7,23 @@ router.get('/', function(req, res, next) {
     if (!req.session.username) {
         res.redirect('/login');
     } else {
+        var u;
+        var p;
+
+        if (req.cookies.user) {
+            u = req.cookies.user.username;
+            p = req.cookies.user.password;
+        } else {
+            u = req.session.username;
+            p = req.session.password;
+        }
+
         var request = require('request');
         var options = {
             url: process.env.JIRA_HOST + '/rest/api/latest/search?jql=project+in+(' + process.env.JIRA_PROJECTS + ')+AND+issuetype+in+(Bug)+and+status+was+Resolved+by+garhom+ORDER+BY+resolutiondate&fields=key,summary,description,updated,priority,resolutiondate',
             auth : {
-                user: req.session.username,
-                pass: req.session.password
+                user: u,
+                pass: p
             }
         };
 
@@ -46,8 +57,6 @@ router.get('/', function(req, res, next) {
                         daysAgo: daysAgo
                     });
                 }
-
-                console.log(resultsSummary);
 
                 res.render('index', {
                     title: 'MyStandUp' ,

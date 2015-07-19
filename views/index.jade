@@ -1,22 +1,37 @@
 extends layout
 
 block content
-    h1= title
 
-    ol
-        each val, index in results
-            li
-                p= val.key
-                p= val.summary
-                if val.daysAgo > 0
-                    if val.daysAgo == 1
-                        p Yesterday
+    div(class="mdl-layout mdl-js-layout mdl-layout--fixed-header")
+        header(class="mdl-layout__header")
+            div(class="mdl-layout__header-row")
+                span(class="mdl-layout-title")= title
+        div(class="mdl-layout__drawer")
+        main(class="mdl-layout__content")
+            div(class="page-content")
+                each val, index in results
+                    if val.daysAgo > 1
+                        - var cls = 'mdl-card mdl-card-done mdl-shadow--4dp'
                     else
-                        p= val.timeAgo
-                else
-                    p= val.timeAgo
+                        - var cls = 'mdl-card mdl-shadow--4dp'
 
-    p Logged on as
-        b  #{username}
-    p
-        a(href='/logout') Logout
+                    div(class=cls)
+                        div(class='mdl-card__title')
+                            h2(class='mdl-card__title-text')= val.key
+                        div(class='mdl-card__supporting-text')
+                            p= val.summary
+                            if val.daysAgo > 0
+                                if val.daysAgo == 1
+                                    span Yesterday
+                                else
+                                    span= val.timeAgo
+                            else
+                                span= val.timeAgo
+                        div(class='mdl-card__actions mdl-card--border')
+                            a(class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect") View details
+
+
+                p Logged on as
+                    b  #{username}
+                p
+                    a(href='/logout') Logout

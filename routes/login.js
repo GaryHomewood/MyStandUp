@@ -16,6 +16,10 @@ router.post('/', function(req, res, next) {
         // store details
         req.session.username = username;
         req.session.password = password;
+
+        if (req.body.remember) {
+            res.cookie('user', { username: username, password: password }, { maxAge: 900000 });
+        }
         res.redirect('/');
     }
 });
