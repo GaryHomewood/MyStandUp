@@ -4,7 +4,7 @@ html>body {
   background-color: #FAFAFA;
 }
 .mdl-card {
-    margin:20px 16px;
+    margin:20px 0;
 }
 .mdl-card__supporting-text span {
     float: right;

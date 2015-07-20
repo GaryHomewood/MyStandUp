@@ -27,8 +27,6 @@ router.get('/', function(req, res, next) {
             }
         };
 
-        console.log(options);
-
         var request = request(
             options,
             function (error, response, body) {
@@ -54,7 +52,8 @@ router.get('/', function(req, res, next) {
                         priority: results.issues[issueIndex].fields.priority.name,
                         resolutionDate: results.issues[issueIndex].fields.resolutiondate,
                         timeAgo: timeAgo,
-                        daysAgo: daysAgo
+                        daysAgo: daysAgo,
+                        url: process.env.JIRA_HOST + "/browse/" + results.issues[issueIndex].key
                     });
                 }
 
