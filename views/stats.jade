@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+    div(class="mdl-layout mdl-js-layout mdl-layout--fixed-header")
+        header(class="mdl-layout__header")
+            div(class="mdl-layout__header-row")
+                span(class="mdl-layout-title") MyStandUp
+        div(class="mdl-layout__drawer")
+            span(class="mdl-layout-title") MyStandUp
+            nav(class="mdl-navigation")
+                a(class="mdl-navigation__link" href="/") Issues
+                a(class="mdl-navigation__link" href="/stats") Stats
+        main(class="mdl-layout__content")
+            div(class="page-content")
+                h1 Stats
+                each val, index in stats
+                    p= val.date + ": " + val.count

@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var stats = require('./routes/stats');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 
@@ -34,7 +34,7 @@ app.use(session({
 }));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/stats', stats);
 app.use('/login', login);
 app.use('/logout', logout);
 
