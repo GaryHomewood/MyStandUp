@@ -4,6 +4,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    var jql = "project+in+(" + process.env.JIRA_PROJECTS + ")+" +
+            "AND+issuetype+in+(Bug)+" +
+            "AND+status+was+Resolved+by+garhom+" +
+            "AND+resolutiondate!=null+" +
+            "ORDER+BY+resolutiondate&fields=key,summary,description,updated,priority,resolutiondate,project";
+
     if (!req.session.username) {
         res.redirect('/login');
     } else {
@@ -20,7 +26,7 @@ router.get('/', function(req, res, next) {
 
         var request = require('request');
         var options = {
-            url: process.env.JIRA_HOST + '/rest/api/latest/search?jql=project+in+(' + process.env.JIRA_PROJECTS + ')+AND+issuetype+in+(Bug)+and+status+was+Resolved+by+garhom+ORDER+BY+resolutiondate&fields=key,summary,description,updated,priority,resolutiondate',
+            url: process.env.JIRA_HOST + '/rest/api/latest/search?jql=' + jql,
             auth : {
                 user: u,
                 pass: p
