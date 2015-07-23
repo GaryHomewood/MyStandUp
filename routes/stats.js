@@ -52,6 +52,8 @@ router.get('/', function(req, res, next) {
                 var resolutionStats = {};
                 resolutionDate = firstResolutionDate;
                 var statsDate = new Date(moment().clone().startOf('day'));
+                // get rid of BST
+                statsDate = moment(statsDate).add(0, "days");
                 while (!moment(statsDate).isBefore(resolutionDate)) {
                     resolutionStats[statsDate] = {count: 0};
                     statsDate = moment(statsDate).add(-1, "days");
