@@ -15,4 +15,7 @@ block content
             div(class="page-content")
                 h1 Stats
                 each val, index in stats
-                    p= val.date + ": " + val.count
+                    div(class="stats-row")
+                    span(class="stats-date")= val.date
+                    - var w = "width:" + (val.count * 50) + "px"
+                    span(class="bar" style=w)= val.count
