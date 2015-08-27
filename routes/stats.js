@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     var jql = "project+in+(" + process.env.JIRA_PROJECTS + ")+" +
-            "AND+issuetype+in+(Bug)+" +
+            "AND+issuetype+in+(Bug,Story)+" +
             "AND+status+was+Resolved+by+garhom+" +
             "AND+resolutiondate!=null+" +
             "ORDER+BY+resolutiondate&fields=key,summary,description,updated,priority,resolutiondate,project";
@@ -69,7 +69,7 @@ router.get('/', function(req, res, next) {
                 var resolutionStatsSummary = [];
                 for (var date in resolutionStats) {
                     resolutionStatsSummary.push({
-            		                 date: moment(date).format("ddd MMMM Do YYYY"),
+            		                 date: moment(date).format("ddd Do MMM"),
                                      count: resolutionStats[date].count
             	                    });
                 }

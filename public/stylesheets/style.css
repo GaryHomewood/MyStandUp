@@ -3,6 +3,9 @@ html>body {
   font-family: 'Roboto','Helvetica','Arial', sans-serif !important;
   background-color: #FAFAFA;
 }
+.mdl-layout__content {
+    padding-bottom: 10rem;
+}
 .mdl-card {
     margin:20px 0;
 }
@@ -20,11 +23,14 @@ button {
     margin: 30px 0;
 }
 .stats-row {
-    margin-bottom: 16px;
+    margin-bottom: 2px;
 }
 .stats-date {
     display: inline-block;
-    width: 150px;
+    width: 9rem;
+    background-color: white;
+    border: 1px solid #d7d7d7;
+    padding: 1px 4px 0px 4px;
 }
 .bar {
     height:20px;
@@ -32,4 +38,32 @@ button {
     background-color:Red;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     display: inline-block;
+    padding: 2px 4px;
+}
+
+/* typography */
+html {
+    font-size: 62.5%
+}
+.headline {
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 32px;
+  line-height: 3.2rem;
+  letter-spacing: 0px;
+  letter-spacing: 0rem;
+  font-weight: 300;
+  color: #212121;
+  text-transform: inherit;
+}
+.caption {
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 20px;
+  line-height: 2rem;
+  letter-spacing: 0.2px;
+  letter-spacing: 0.02rem;
+  font-weight: 300;
+  color: #757575;
+  text-transform: inherit;
 }

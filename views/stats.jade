@@ -13,9 +13,16 @@ block content
                 a(class="mdl-navigation__link" href="/stats") Stats
         main(class="mdl-layout__content")
             div(class="page-content")
-                h1 Stats
+                h1(class="headline") Stats
+                hr
                 each val, index in stats
-                    div(class="stats-row")
-                    span(class="stats-date")= val.date
-                    - var w = "width:" + (val.count * 50) + "px"
-                    span(class="bar" style=w)= val.count
+                    if val.date.substring(0, 3) === "Sat"
+
+                    else if val.date.substring(0, 3) === "Sun"
+                        hr
+                    else
+                        div(class="stats-row")
+                            span(class="caption stats-date")= val.date
+                            if val.count > 0
+                                - var w = "width:" + (val.count * 50) + "px"
+                                span(class="bar" style=w)= val.count
