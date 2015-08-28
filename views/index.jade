@@ -5,12 +5,15 @@ block content
     div(class="mdl-layout mdl-js-layout mdl-layout--fixed-header")
         header(class="mdl-layout__header")
             div(class="mdl-layout__header-row")
-                span(class="mdl-layout-title") StandApp
+                span(class="mdl-layout-title") Resolved issues
+
         div(class="mdl-layout__drawer")
             span(class="mdl-layout-title") StandApp
             nav(class="mdl-navigation")
-                a(class="mdl-navigation__link" href="") Issues
+                a(class="mdl-navigation__link" href="") Resolved issues
+                a(class="mdl-navigation__link" href="/pull-requests") Pull requests
                 a(class="mdl-navigation__link" href="/stats") Stats
+
         main(class="mdl-layout__content")
             div(class="page-content")
                 each val, index in results
@@ -26,9 +29,9 @@ block content
                             p= val.summary
                             if val.daysAgo > 0
                                 if val.daysAgo == 1
-                                    span Yesterday
+                                    span(class="caption") Yesterday
                                 else
-                                    span= val.timeAgo + ' ago'
+                                    span(class="caption")= val.timeAgo + ' ago'
                             else
                                 span= val.timeAgo
                         div(class='mdl-card__actions mdl-card--border')

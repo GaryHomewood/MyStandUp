@@ -8,6 +8,7 @@ var session = require('express-session');
 
 var routes = require('./routes/index');
 var stats = require('./routes/stats');
+var pullrequests = require('./routes/pull-requests');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 
@@ -35,6 +36,7 @@ app.use(session({
 
 app.use('/', routes);
 app.use('/stats', stats);
+app.use('/pull-requests', pullrequests);
 app.use('/login', login);
 app.use('/logout', logout);
 

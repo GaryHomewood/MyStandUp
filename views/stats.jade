@@ -5,15 +5,17 @@ block content
     div(class="mdl-layout mdl-js-layout mdl-layout--fixed-header")
         header(class="mdl-layout__header")
             div(class="mdl-layout__header-row")
-                span(class="mdl-layout-title") StandApp
+                span(class="mdl-layout-title") Stats
+
         div(class="mdl-layout__drawer")
             span(class="mdl-layout-title") StandApp
             nav(class="mdl-navigation")
-                a(class="mdl-navigation__link" href="/") Issues
+                a(class="mdl-navigation__link" href="/") Resolved issues
+                a(class="mdl-navigation__link" href="/pull-requests") Pull requests
                 a(class="mdl-navigation__link" href="/stats") Stats
+
         main(class="mdl-layout__content")
             div(class="page-content")
-                h1(class="headline") Stats
                 hr
                 each val, index in stats
                     if val.date.substring(0, 3) === "Sat"
