@@ -20,15 +20,18 @@ block content
         main(class="mdl-layout__content")
             div(class="page-content")
                 each val, index in results
-                    if val.daysAgo > 1
-                        - var cls = 'mdl-card mdl-card-done mdl-shadow--4dp'
-                    else
+                    if index > 1
                         - var cls = 'mdl-card mdl-shadow--4dp'
+                    else
+                        - var cls = 'resolved-issue mdl-card mdl-shadow--4dp'
 
                     div(class=cls)
+                        if index <= 1
+                            span(class="talkback-content")= val.key + ", " + val.summary
+
                         div(class='mdl-card__title')
-                        div(class='mdl-card__supporting-text')
                             h2(class='mdl-card__title-text')= val.key
+                        div(class='mdl-card__supporting-text')
                             p= val.summary
                             if val.daysAgo > 0
                                 if val.daysAgo == 1

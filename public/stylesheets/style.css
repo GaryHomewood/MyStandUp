@@ -7,17 +7,33 @@ html>body {
     padding-bottom: 10rem;
 }
 .mdl-card {
-    margin:20px 0;
+    margin:20px auto;
 }
 .mdl-card__supporting-text span {
     float: right;
 }
-.mdl-card-done {
+.resolved-issue.mdl-card {
+    background: #009688;
+}
+.resolved-issue > .mdl-card__title,
+.resolved-issue > .mdl-card__supporting-text,
+.resolved-issue > .mdl-card__supporting-text > .caption,
+.resolved-issue > .mdl-card__actions,
+.resolved-issue > .mdl-card__actions > .mdl-button {
+  color: #fff;
+}
+.resolved-issue > .mdl-card__actions.mdl-card--border {
+    border-top: 1px solid #80cbc4;
+}
+.talkback-content {
+    display: none;
 }
 .page-content {
-    width: 550px;
     margin: 0 auto;
     padding: 0 16px;
+}
+.login {
+    width: 330px;
 }
 button {
     margin: 30px 0;
@@ -27,7 +43,7 @@ button {
 }
 .stats-date {
     display: inline-block;
-    width: 9rem;
+    width: 8rem;
     background-color: white;
     border: 1px solid #d7d7d7;
     padding: 1px 4px 0px 4px;
@@ -42,7 +58,6 @@ button {
     display: inline-block;
     padding-left: 4px;
 }
-
 /* typography */
 html {
     font-size: 62.5%
