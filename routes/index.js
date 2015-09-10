@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var jql = "project+in+(" + process.env.JIRA_PROJECTS + ")+" +
-            "AND+issuetype+in+(Bug,Story)+" +
+            "AND+issuetype+in+(Bug,Story,Task)+" +
             "AND+status+was+Resolved+by+garhom+" +
             "AND+resolutiondate!=null+" +
             "ORDER+BY+resolutiondate&fields=key,summary,description,updated,priority,resolutiondate,project";
@@ -51,10 +51,15 @@ router.get('/', function(req, res, next) {
                         daysAgo = now.dayOfYear() - resolutionDate.dayOfYear();
                     }
 
+                    var desc = results.issues[issueIndex].fields.description;
+                    if (desc != null) {
+                        desc = desc.replace(/[\n\r]/g, '');
+                    }
+
                     resultsSummary.push({
                         key: results.issues[issueIndex].key,
                         summary: results.issues[issueIndex].fields.summary,
-                        description: results.issues[issueIndex].fields.description.replace(/[\n\r]/g, ''),
+                        description: desc,
                         priority: results.issues[issueIndex].fields.priority.name,
                         resolutionDate: results.issues[issueIndex].fields.resolutiondate,
                         timeAgo: timeAgo,

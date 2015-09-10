@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     var jql = "project+in+(" + process.env.JIRA_PROJECTS + ")+" +
-            "AND+issuetype+in+(Bug,Story)+" +
+            "AND+issuetype+in+(Bug,Story,Task)+" +
             "AND+status+was+Resolved+by+garhom+" +
             "AND+resolutiondate!=null+" +
             "ORDER+BY+resolutiondate&fields=key,summary,description,updated,priority,resolutiondate,project";

@@ -20,7 +20,7 @@ block content
         main(class="mdl-layout__content")
             div(class="page-content")
                 each val, index in results
-                    if index > 1
+                    if val.daysAgo > 1
                         - var cls = 'mdl-card mdl-shadow--4dp'
                     else
                         - var cls = 'resolved-issue mdl-card mdl-shadow--4dp'
