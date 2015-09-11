@@ -51,6 +51,14 @@ router.get('/', function(req, res, next) {
                         daysAgo = now.dayOfYear() - resolutionDate.dayOfYear();
                     }
 
+                    // take account of weekends
+                    var resolved = false;
+                    if (    (now.day() == 1 && daysAgo == 3)
+                        ||  (now.day() == 7 && daysAgo == 2)
+                        ||  (daysAgo <= 1)) {
+                        resolved = true
+                    }
+
                     var desc = results.issues[issueIndex].fields.description;
                     if (desc != null) {
                         desc = desc.replace(/[\n\r]/g, '');
@@ -64,6 +72,7 @@ router.get('/', function(req, res, next) {
                         resolutionDate: results.issues[issueIndex].fields.resolutiondate,
                         timeAgo: timeAgo,
                         daysAgo: daysAgo,
+                        resolved: resolved,
                         url: process.env.JIRA_HOST + "/browse/" + results.issues[issueIndex].key
                     });
                 }

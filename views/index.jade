@@ -20,20 +20,19 @@ block content
         main(class="mdl-layout__content")
             div(class="page-content")
                 each val, index in results
-                    if val.daysAgo > 1
-                        - var cls = 'mdl-card mdl-shadow--4dp'
-                    else
-                        - var cls = 'resolved-issue mdl-card mdl-shadow--4dp'
+                    - var cls = 'mdl-card mdl-shadow--4dp'
+                    if val.resolved
+                        - cls += ' resolved-issue'
 
                     div(class=cls)
-                        if index <= 1
+                        if val.resolved
                             span(class="talkback-content")= val.key + ", " + val.summary
 
                         div(class='mdl-card__title')
                             h2(class='mdl-card__title-text')= val.key
                         div(class='mdl-card__supporting-text')
                             p= val.summary
-                            if val.daysAgo > 0
+                            if val.daysAgo >= 0
                                 if val.daysAgo == 1
                                     span(class="caption") Yesterday
                                 else
@@ -42,9 +41,3 @@ block content
                                 span= val.timeAgo
                         div(class='mdl-card__actions mdl-card--border')
                             a(class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href=val.url) View details
-
-
-                p Logged on as
-                    b  #{username}
-                p
-                    a(href='/logout') Logout
